@@ -9,7 +9,7 @@ class CategoriasAPIView(generics.ListCreateAPIView):
     serializer_class = CategoriaSerializer
 
 class CategoriaAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Video.objects.all()
+    queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializer
 
 class VideosAPIView(generics.ListCreateAPIView):
