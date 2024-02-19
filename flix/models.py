@@ -10,12 +10,24 @@ class Base(models.Model):
         abstract = True
 
 
-# Create your models here.
+class Categoria(models.Model):
+    id = models.AutoField(primary_key=True)
+    titulo = models.CharField(max_length=255)
+    cor = models.CharField(max_length=255)
+
+    class Meta:
+        verbose_name = "Categoria"
+        verbose_name_plural = "Categorias"
+
+    def __str__(self):
+        return self.titulo
+
 class Video(Base):
     id = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=255)
     descricao = models.CharField(max_length=255)
     url = models.URLField(unique=True)
+    categoriaId = models.ForeignKey(Categoria, on_delete=models.CASCADE, default=1, blank=True)
 
     class Meta:
         verbose_name = "Video"
@@ -23,3 +35,4 @@ class Video(Base):
 
     def __str__(self):
         return self.titulo
+

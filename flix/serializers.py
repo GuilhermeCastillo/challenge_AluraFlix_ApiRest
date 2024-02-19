@@ -1,10 +1,14 @@
 from rest_framework import serializers
-from .models import Video
+from .models import Video, Categoria
 
 
 class VideoSerializer(serializers.ModelSerializer):
 
     class Meta:
-        extra_kwargs = {"email": {"write_only": True}}
         model = Video
-        fields = ("id", "titulo", "descricao", "url", "criacao", "ativo")
+        fields = ("id", "titulo", "descricao", "url", "categoriaId" ,"criacao", "ativo")
+
+class CategoriaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Categoria
+        fields = ("id", "titulo", "cor")
