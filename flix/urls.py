@@ -4,6 +4,7 @@ from .views import VideosAPIView, VideoAPIView, CategoriasAPIView, CategoriaAPIV
 urlpatterns = [
     path("categorias/", CategoriasAPIView.as_view(), name="categorias"),
     path("categorias/<int:pk>", CategoriaAPIView.as_view(), name="categoria"),
+    path("categorias/<int:categoria_pk>/videos/", VideosAPIView.as_view(), name="video_categoria"),
     path("videos/", VideosAPIView.as_view(), name="videos"),
     path("videos/<int:pk>", VideoAPIView.as_view(), name="video"),
 ]
