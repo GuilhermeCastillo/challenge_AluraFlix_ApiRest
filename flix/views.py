@@ -8,6 +8,9 @@ from rest_framework.response import Response
 from .models import Video, Categoria
 from .serializers import VideoSerializer, CategoriaSerializer
 
+
+####################################### VERSION 1 API 
+
 class CategoriasAPIView(generics.ListCreateAPIView):
     queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializer
@@ -24,8 +27,17 @@ class VideosAPIView(generics.ListCreateAPIView):
         if self.kwargs.get("categoria_pk"):
             return self.queryset.filter(categoriaId = self.kwargs.get("categoria_pk"))
         
+        categoria = self.request.query_params.get('search')
+
+        print(categoria)
+        if categoria:
+            queryset = self.queryset.filter(categoriaId_id=categoria)
+            if queryset:
+                return queryset
+                        
         return self.queryset.all()
     
 class VideoAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Video.objects.all()
     serializer_class = VideoSerializer
+    
