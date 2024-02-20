@@ -18,6 +18,7 @@ class Categoria(models.Model):
     class Meta:
         verbose_name = "Categoria"
         verbose_name_plural = "Categorias"
+        ordering = ["id"]
 
     def __str__(self):
         return self.titulo
@@ -32,6 +33,7 @@ class Video(Base):
     class Meta:
         verbose_name = "Video"
         verbose_name_plural = "Videos"
+        ordering = ["id"]
 
     def __str__(self):
         return self.titulo
